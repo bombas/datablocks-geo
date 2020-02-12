@@ -1,8 +1,14 @@
 include: "bigquery.*.view.lkml"
 
+access_grant: wip {
+  user_attribute: wip
+  allowed_values: ["Yes"]
+}
 
 explore: geo {
   from: bq_logrecno_bg_map
+
+  required_access_grants: [wip]
 
   join: tract_zcta_map {
     from: bq_tract_zcta_map
