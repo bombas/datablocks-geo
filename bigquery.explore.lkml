@@ -10,6 +10,13 @@ explore: geo {
 
   required_access_grants: [wip]
 
+  join: block_group_facts {
+    from: bq_block_group_facts
+    view_label: "Demographics"
+    sql_on: ${geo.block_group} = ${block_group_facts.logrecno_bg_map_block_group};;
+    relationship: one_to_one
+  }
+
   join: tract_zcta_map {
     from: bq_tract_zcta_map
     sql_on: ${geo.geoid11} = ${tract_zcta_map.geoid11};;
